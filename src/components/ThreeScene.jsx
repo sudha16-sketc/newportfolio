@@ -5,6 +5,8 @@ import FloatingModel from "./FloatingModel";
  function ThreeScene() {
   return (
     <Canvas
+    dpr={[1, 1.5]}
+    frameloop="always"
       camera={{ position: [0, 0, 8], fov: 45 }}
       style={{
         position: "fixed",

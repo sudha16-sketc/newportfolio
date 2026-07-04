@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -11,11 +10,31 @@ import Footer from "./components/Footer";
 import ThreeScene from "./components/ThreeScene";
 import "./styles/global.css";
 import ContactInput from "./components/ContactInput";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
-      <ThreeScene />
+      {!isMobile && <ThreeScene />}
       <Header />
       <Hero />
       <About />

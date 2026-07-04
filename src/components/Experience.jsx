@@ -20,7 +20,9 @@ function Experience() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: titleRef.current,
-          start: "top 80%",
+          start: window.innerWidth <=768
+        ? "top 95%"
+        : "top 80%",
         },
       });
 
@@ -28,30 +30,34 @@ function Experience() {
       itemsRef.current.forEach((item, index) => {
         gsap.from(item, {
           opacity: 0,
-          x: index % 2 === 0 ? -100 : 100,
+          x: window.innerWidth > 768 ? (index % 2 === 0 ? -100 : 100) : 0,
+
+          y: window.innerWidth <= 768 ? 60 : 0,
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: item,
-            start: "top 85%",
+            start: window.innerWidth <=768
+        ? "top 95%"
+        : "top 80%",
             toggleActions: "play none none reverse",
           },
         });
       });
 
       gsap.to(lineRef.current, {
-      scaleY: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".timeline",
-        start: "top 80%",
-        end: "bottom 80%",
-        scrub: true,
-      },
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".timeline",
+          start: window.innerWidth <=768
+        ? "top 95%"
+        : "top 80%",
+          end: "bottom 80%",
+          scrub: true,
+        },
+      });
     });
-    });
-
-    
 
     return () => ctx.revert();
   }, []);

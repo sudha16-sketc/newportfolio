@@ -11,19 +11,17 @@ export default function FloatingModel() {
 
   useEffect(() => {
     const updateScroll = () => {
-      const max =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
 
-      setScroll(window.scrollY / max);
+      const progress = max > 0 ? window.scrollY / max : 0;
+      setScroll(progress);
     };
 
     updateScroll();
 
     window.addEventListener("scroll", updateScroll);
 
-    return () =>
-      window.removeEventListener("scroll", updateScroll);
+    return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
   useFrame((state) => {
@@ -32,26 +30,17 @@ export default function FloatingModel() {
     const t = state.clock.elapsedTime;
 
     // Floating animation
-    ref.current.position.y =
-      Math.sin(t * 2) * 0.4;
+    ref.current.position.y = Math.sin(t * 2) * 0.4;
 
     // Scroll movement
-    ref.current.position.x =
-      Math.sin(scroll * Math.PI * 2) * 3;
+    ref.current.position.x = Math.sin(scroll * Math.PI * 2) * 2;
 
-    ref.current.position.z =
-      Math.cos(scroll * Math.PI) * 2;
+    ref.current.position.z = Math.cos(scroll * Math.PI) * 1.2;
 
     // Rotation
     ref.current.rotation.y += 0.02;
     ref.current.rotation.x += 0.003;
   });
 
-  return (
-    <primitive
-      ref={ref}
-      object={model.scene}
-      scale={2}
-    />
-  );
+  return <primitive ref={ref} object={model.scene} scale={2} />;
 }

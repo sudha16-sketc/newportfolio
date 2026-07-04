@@ -45,38 +45,65 @@ function Projects() {
   ];
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Heading animation
-      gsap.from(titleRef.current, {
-        opacity: 0,
-        x: 100,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 80%",
-        },
-      });
+    const mm = gsap.matchMedia();
 
-      // Cards animation
-      cardsRef.current.forEach((card) => {
-        gsap.from(card, {
-          opacity: 0,
-          x: 500,
-          scale: 1,
-          duration: 2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 50%",
-            toggleActions: "play none none reverse",
-          },
+    mm.add("(min-width: 769px)", () => {
+
+        gsap.from(titleRef.current,{
+            opacity:0,
+            x:100,
+            duration:1,
+            scrollTrigger:{
+                trigger:titleRef.current,
+                start:"top 80%"
+            }
         });
-      });
+
+        cardsRef.current.forEach(card=>{
+            gsap.from(card,{
+                opacity:0,
+                x:300,
+                duration:1,
+                ease:"power3.out",
+                scrollTrigger:{
+                    trigger:card,
+                    start:"top 70%"
+                }
+            });
+        });
+
     });
 
-    return () => ctx.revert();
-  }, []);
+    mm.add("(max-width:768px)",()=>{
+
+        gsap.from(titleRef.current,{
+            opacity:0,
+            y:40,
+            duration:.6,
+            scrollTrigger:{
+                trigger:titleRef.current,
+                start:"top 95%"
+            }
+        });
+
+        cardsRef.current.forEach(card=>{
+            gsap.from(card,{
+                opacity:0,
+                y:60,
+                duration:.7,
+                ease:"power2.out",
+                scrollTrigger:{
+                    trigger:card,
+                    start:"top 95%"
+                }
+            });
+        });
+
+    });
+
+    return ()=>mm.revert();
+
+},[]);
 
   return (
     <section className="info-section" id="projects">

@@ -20,11 +20,7 @@ function Skills() {
         scale: 1,
         rotation: [0, 0, 0],
       },
-      items: [
-        "JavaScript",
-        "Solidity",
-        "Python",
-      ],
+      items: ["JavaScript", "Solidity", "Python"],
     },
     {
       title: "Frontend",
@@ -33,13 +29,7 @@ function Skills() {
         scale: 1,
         rotation: [0, 0, 0],
       },
-      items: [
-        "React",
-        "HTML5",
-        "CSS3",
-        "Tailwind CSS",
-        "GSAP",
-      ],
+      items: ["React", "HTML5", "CSS3", "Tailwind CSS", "GSAP"],
     },
     {
       title: "Backend",
@@ -48,11 +38,7 @@ function Skills() {
         scale: 50,
         rotation: [0, -Math.PI / 2, 0],
       },
-      items: [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-      ],
+      items: ["Node.js", "Express", "PostgreSQL"],
     },
     {
       title: "Blockchain",
@@ -61,12 +47,7 @@ function Skills() {
         scale: 0.9,
         rotation: [0, 0, 0],
       },
-      items: [
-        "Ethereum",
-        "Solidity",
-        "Hardhat",
-        "Stellar",
-      ],
+      items: ["Ethereum", "Solidity", "Hardhat", "Stellar"],
     },
   ];
 
@@ -79,7 +60,7 @@ function Skills() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: titleRef.current,
-          start: "top 80%",
+          start: "top 90%",
         },
       });
 
@@ -94,7 +75,7 @@ function Skills() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
+            start: "top 90%",
           },
         });
       });
@@ -103,25 +84,28 @@ function Skills() {
     return () => ctx.revert();
   }, []);
 
-    useGSAP(() => {
-        const cards = sectionRef.current.querySelectorAll('.skill-card');
-        gsap.fromTo(
-            cards,
-            { y: 50, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: 'power2.out',
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top center',
-                    toggleActions: 'play none none reset',
-                },
-            }
-        );
-    }, { scope: sectionRef });
+  useGSAP(
+    () => {
+      const cards = sectionRef.current.querySelectorAll(".skill-card");
+      gsap.fromTo(
+        cards,
+        { y: window.innerWidth <= 768 ? 30 : 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: window.innerWidth <= 768 ? "top 90%" : "top center",
+            toggleActions: "play none none reset",
+          },
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section id="skills">

@@ -1968,3 +1968,21 @@ RESPONSIVE
   z-index: 5;
 }
 
+
+@media (max-width:768px){
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+section{
+
+    overflow:hidden;
+
+}
+
+}
