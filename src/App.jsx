@@ -8,13 +8,14 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
+import ThreeScene from "./components/ThreeScene";
 import "./styles/global.css";
 import ContactInput from "./components/ContactInput";
 
 function Home() {
   return (
     <>
+      <ThreeScene />
       <Header />
       <Hero />
       <About />

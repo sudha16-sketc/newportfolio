@@ -22,8 +22,6 @@ function Skills() {
       },
       items: [
         "JavaScript",
-        "TypeScript",
-        "Rust",
         "Solidity",
         "Python",
       ],
@@ -53,8 +51,6 @@ function Skills() {
       items: [
         "Node.js",
         "Express",
-        "Rust",
-        "REST APIs",
         "PostgreSQL",
       ],
     },
@@ -69,7 +65,6 @@ function Skills() {
         "Ethereum",
         "Solidity",
         "Hardhat",
-        "Foundry",
         "Stellar",
       ],
     },
@@ -123,7 +118,6 @@ function Skills() {
                     trigger: sectionRef.current,
                     start: 'top center',
                     toggleActions: 'play none none reset',
-                    // markers: true, // <- optional for debugging
                 },
             }
         );

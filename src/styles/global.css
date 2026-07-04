@@ -1959,3 +1959,12 @@ RESPONSIVE
     margin-top: 30px;
   }
 }
+
+
+.canvas {
+  position: fixed !important;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
