@@ -971,6 +971,16 @@ TECH TAGS
   color: white;
 }
 
+.project-info{
+
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  width: 100%;
+
+}
+
 /*==================================================
 RESPONSIVE
 ==================================================*/
@@ -1985,4 +1995,237 @@ section{
 
 }
 
+}
+.certificate-section {
+  padding: 80px 6%;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+.background-video{
+    position: absolute;
+    inset: 0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-2;
+}
+.certificate-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    z-index:-1;
+}
+.certificate-heading {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Coverflow container ---------- */
+.coverflow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 460px;
+  perspective: 1400px;
+}
+
+.coverflow-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* ---------- Cards ---------- */
+/* NOTE: transform/opacity/filter are now driven by GSAP inline styles,
+   so no CSS transition or transform rule is set here to avoid conflicts. */
+.certificate-card {
+  position: absolute;
+  flex: none;
+  width: 640px;
+  height: 400px;
+
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+
+  box-shadow: 0 20px 40px rgba(248, 247, 247, 0.35);
+  will-change: transform, opacity, filter;
+}
+
+.certificate-card.is-active {
+  box-shadow: 0 30px 60px rgba(37, 99, 235, 0.45);
+}
+
+
+
+/* Image container */
+.certificate-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.45s ease;
+}
+
+/* Actual image */
+.certificate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition:
+    transform 0.45s ease,
+    width 0.45s ease,
+    height 0.45s ease;
+}
+
+
+.certificate-card h2 {
+  position: absolute;
+  left: 20px;
+  bottom: 30px;
+  z-index: 10;
+  transition: bottom 0.45s ease;
+}
+
+
+.certificate-card h2 {
+  padding: 18px 20px 6px;
+  font-size: 1.15rem;
+  color: #0f172a;
+}
+
+.certificate-card p {
+  padding: 0 20px;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.certificate-card span {
+  display: block;
+  padding: 16px 20px;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* ---------- Nav arrows ---------- */
+.coverflow-nav {
+  position: relative;
+  z-index: 20;
+
+  width: 90px;
+  height: 90px;
+
+  border: none;
+  background: #f6ff00;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s ease;
+}
+
+.coverflow-nav:hover:not(:disabled) {
+  background: #f0f63b;
+}
+
+.coverflow-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.coverflow-nav-prev {
+  margin-right: 20px;
+clip-path: polygon(38% 0, 11% 50%, 39% 100%, 25% 100%, 0% 50%, 25% 0%);
+background-color: #f6ff00;
+transform: scale(2);
+}
+
+.coverflow-nav-next {
+  margin-left: 20px;
+clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 61% 100%, 87% 50%, 61% 0);
+background-color: #f3fb00;
+transform: scale(2);
+}
+
+.certificate-overlay{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.85);
+
+    z-index:99999;
+}
+
+.certificate-preview{
+    object-fit:contain;
+    cursor:zoom-out;
+
+    border-radius:20px;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .certificate-heading {
+    font-size: 2rem;
+  }
+
+  .coverflow {
+    height: 380px;
+    perspective: 900px;
+  }
+
+  .certificate-card {
+    width: 240px;
+    height: 320px;
+  }
+
+  .certificate-image {
+    height: 160px;
+  }
+
+  .coverflow-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+  }
+}
+.certificate-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.certificate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

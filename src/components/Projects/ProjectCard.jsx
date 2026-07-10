@@ -18,7 +18,7 @@ function ProjectCard({
         playsInline
       ></video>
 
-      <button>{buttonText}</button>
+      
     </div>
   );
 }

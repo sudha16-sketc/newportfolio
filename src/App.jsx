@@ -10,6 +10,9 @@ import Footer from "./components/Footer";
 import ThreeScene from "./components/ThreeScene";
 import "./styles/global.css";
 import ContactInput from "./components/ContactInput";
+import Certificate from "./components/certificates/Certificate"
+import CertificatePage from "./components/certificates/CertificatePage"
+import AllProjects from "./components/Projects/AllProjects";
 import { useEffect, useState } from "react";
 
 function Home() {
@@ -38,6 +41,7 @@ function Home() {
       <Header />
       <Hero />
       <About />
+      <Certificate/>
       <Projects />
       <Experience />
       <Skills />
@@ -53,6 +57,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contactinput" element={<ContactInput />} />
+        <Route path="/certificatePage" element={<CertificatePage />} />
+        <Route path="/allprojects" element={<AllProjects />} />
       </Routes>
     </BrowserRouter>
   );

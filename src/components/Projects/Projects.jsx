@@ -2,7 +2,7 @@ import "../../styles/global.css";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { useNavigate } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 function Projects() {
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
-
+  const navigate = useNavigate();
   const projects = [
     {
       title: "BuildVerse",
@@ -42,6 +42,12 @@ function Projects() {
         "AI-powered smart gardening assistant providing personalized plant care recommendations using Gemini AI and intelligent visual guides.",
       video: "/videos/plantcare.mp4",
     },
+   {
+  title: "See More",
+  description: "Click here to see more of my projects.",
+  video: "/videos/hero-1.mp4",
+  isSeeMore: true,
+}
   ];
 
   useEffect(() => {
@@ -117,18 +123,26 @@ function Projects() {
       </p>
 
       <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            ref={(el) => (cardsRef.current[index] = el)}
-          >
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              video={project.video}
-            />
-          </div>
-        ))}
+{projects.map((project, index) => (
+  <div
+    key={index}
+    ref={(el) => (cardsRef.current[index] = el)}
+    onClick={() => {
+      if (project.isSeeMore) {
+        navigate("/allprojects");
+      }
+    }}
+    style={{
+      cursor: project.isSeeMore ? "pointer" : "default",
+    }}
+  >
+    <ProjectCard
+      title={project.title}
+      description={project.description}
+      video={project.video}
+    />
+  </div>
+))}
       </div>
     </section>
   );
