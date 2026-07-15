@@ -331,6 +331,13 @@ export default function CertificatePage() {
         />
     </div>
 )}
+
+    <button
+        className="contact-back-btn"
+        onClick={() => window.history.back()}
+      >
+        ⬅ BACK
+      </button>
     </section>
   );
 }

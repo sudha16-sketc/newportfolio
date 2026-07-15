@@ -335,7 +335,7 @@ export default function AllProjects() {
 
                 <h2>{projects.title}</h2>
                 <p>{projects.description}</p>
-                <div className="project-info">
+                {/* <div className="project-info">
                   <button>
                     <a href={projects.veiw}>Veiw Project</a>
                   </button>
@@ -345,7 +345,7 @@ export default function AllProjects() {
                   <button>
                     <a href={projects.documentation}>Veiw Documentation</a>
                   </button>
-                </div>
+                </div> */}
               </div>
             );
           })}
@@ -379,6 +379,14 @@ export default function AllProjects() {
           />
         </div>
       )}
+
+
+          <button
+        className="contact-back-btn"
+        onClick={() => window.history.back()}
+      >
+        ⬅ BACK
+      </button>
     </section>
   );
 }

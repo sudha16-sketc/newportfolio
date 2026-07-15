@@ -59,6 +59,7 @@ function App() {
         <Route path="/contactinput" element={<ContactInput />} />
         <Route path="/certificatePage" element={<CertificatePage />} />
         <Route path="/allprojects" element={<AllProjects />} />
+      <Route path="/projects" element={<Projects />} />
       </Routes>
     </BrowserRouter>
   );
